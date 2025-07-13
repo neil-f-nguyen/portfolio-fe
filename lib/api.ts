@@ -1,6 +1,6 @@
 import { Profile, Project, Skill, Experience, AboutCard, LearningItem, Goal, FunFact } from '@/types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://portfolio-be-production-b094.up.railway.app/api';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000/api';
 
 class ApiClient {
   private baseUrl: string;

@@ -131,6 +131,70 @@
     transition: all 0.3s ease;
   }
   
+  /* Tùy chỉnh cho ảnh mobile và desktop */
+  .project-carousel img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+  }
+  
+  /* Đặc biệt cho ảnh mobile - giữ tỷ lệ và căn giữa */
+  .project-carousel .mobile-image {
+    object-fit: contain !important;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+  }
+  
+  .project-carousel .mobile-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Gallery Modal Styles */
+  .gallery-pagination .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+  
+  .gallery-pagination .swiper-pagination-bullet-active {
+    background: white;
+    transform: scale(1.2);
+  }
+  
+  /* Zoom indicator */
+  .swiper-zoom-container {
+    position: relative;
+  }
+  
+  .swiper-zoom-container::after {
+    content: '🔍 Click to zoom';
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .swiper-zoom-container:hover::after {
+    opacity: 1;
+  }
+  
+  /* Đặc biệt cho ảnh desktop - có thể crop một chút */
+  .project-carousel .desktop-image {
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
   .project-carousel .swiper-pagination-custom .swiper-pagination-bullet-active {
     background: rgba(255, 255, 255, 1);
     transform: scale(1.2);
@@ -138,5 +202,14 @@
   
   .project-carousel .swiper-pagination-custom .swiper-pagination-bullet:hover {
     background: rgba(255, 255, 255, 0.8);
+  }
+  
+  /* Carousel click indicator */
+  .project-carousel {
+    transition: transform 0.3s ease;
+  }
+  
+  .project-carousel:hover {
+    transform: scale(1.02);
   }
 } 
