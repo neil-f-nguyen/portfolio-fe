@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 
-// Helper function để lấy color class từ color name
+// Helper function to get color class from color name
 export const getColorClass = (color: string) => {
   const colorMap: { [key: string]: string } = {
     blue: 'bg-blue-500',
@@ -16,7 +16,7 @@ export const getColorClass = (color: string) => {
   return colorMap[color] || 'bg-gray-500';
 };
 
-// Component để hiển thị tech stack thông minh
+// Component to display smart tech stack
 export const TechStackDisplay = ({ technologies }: { technologies: string[] }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [visibleTechs, setVisibleTechs] = useState<string[]>([]);
@@ -28,9 +28,9 @@ export const TechStackDisplay = ({ technologies }: { technologies: string[] }) =
     const container = containerRef.current;
     const containerWidth = container.offsetWidth;
 
-    // Ước tính chiều rộng của mỗi tech tag (padding + text + margin)
+    // Estimate width of each tech tag (padding + text + margin)
     const avgTechWidth = 70; // px
-    const plusTextWidth = 30; // px cho "+X"
+    const plusTextWidth = 30; // px for "+X"
 
     const maxTechsWithoutPlus = Math.floor(containerWidth / avgTechWidth);
     const maxTechsWithPlus = Math.floor(
@@ -51,7 +51,7 @@ export const TechStackDisplay = ({ technologies }: { technologies: string[] }) =
       {visibleTechs.map(tech => (
         <span
           key={tech}
-          className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap flex-shrink-0"
+          className="px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0 border border-blue-500 text-blue-500 bg-transparent transition-all duration-200 hover:bg-blue-100 hover:border-blue-600 hover:text-blue-600 hover:shadow-md"
         >
           {tech}
         </span>
@@ -61,6 +61,22 @@ export const TechStackDisplay = ({ technologies }: { technologies: string[] }) =
           +{hiddenCount}
         </span>
       )}
+    </div>
+  );
+};
+
+// Component to display full tech stack in gallery
+export const TechStackDisplayFull = ({ technologies }: { technologies: string[] }) => {
+  return (
+    <div className="flex flex-wrap gap-2 tech-stack-full">
+      {technologies.map((tech, index) => (
+        <span
+          key={tech}
+          className="px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap flex-shrink-0 border border-blue-500 text-blue-500 bg-transparent transition-all duration-200 hover:bg-blue-100 hover:border-blue-600 hover:text-blue-600 hover:shadow-md tech-tag"
+        >
+          {tech}
+        </span>
+      ))}
     </div>
   );
 }; 

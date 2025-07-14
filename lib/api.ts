@@ -1,6 +1,17 @@
-import { Profile, Project, Skill, Experience, AboutCard, LearningItem, Goal, FunFact } from '@/types';
+import {
+  Profile,
+  Project,
+  Skill,
+  Experience,
+  AboutCard,
+  LearningItem,
+  Goal,
+  FunFact,
+} from '@/types';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://portfolio-be-production-b094.up.railway.app/api'
+const API_BASE_URL =
+  process.env.NEXT_PUBLIC_API_URL ||
+  'https://portfolio-be-production-b094.up.railway.app/api';
 
 class ApiClient {
   private baseUrl: string;
@@ -49,8 +60,6 @@ class ApiClient {
   async getFunFacts(): Promise<FunFact[]> {
     return this.request<FunFact[]>('/fun-facts');
   }
-
-
 }
 
-export const apiClient = new ApiClient(API_BASE_URL); 
+export const apiClient = new ApiClient(API_BASE_URL);

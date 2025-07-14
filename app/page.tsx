@@ -92,6 +92,16 @@ export default function Home() {
     );
   }
 
+  // Smooth scroll handler (copy from Header)
+  const handleNavClick = (e: React.MouseEvent<HTMLButtonElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="min-h-screen section-ai">
       <Header />
@@ -130,6 +140,7 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="btn-ai"
+              onClick={e => handleNavClick(e, '#projects')}
             >
               View Projects
             </motion.button>
@@ -137,6 +148,7 @@ export default function Home() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="btn-ai"
+              onClick={e => handleNavClick(e, '#contact')}
             >
               Contact Me
             </motion.button>

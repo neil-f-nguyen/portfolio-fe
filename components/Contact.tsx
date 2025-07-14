@@ -126,22 +126,77 @@ export default function Contact({ profile }: ContactProps) {
             </h3>
             <div className="space-y-3 md:space-y-4">
               <div className="flex items-center gap-3">
-                <span className="text-xl md:text-2xl">📧</span>
-                <span className="text-gray-700 font-medium text-sm md:text-base">
+                {/* Email Icon + Link */}
+                <span className="text-xl md:text-2xl text-blue-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 4H8a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V6a2 2 0 00-2-2z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M22 6l-10 7L2 6" />
+                  </svg>
+                </span>
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="text-blue-600 hover:underline font-medium text-sm md:text-base transition-colors duration-200"
+                >
                   {profile.email}
-                </span>
+                </a>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-xl md:text-2xl">📱</span>
-                <span className="text-gray-700 font-medium text-sm md:text-base">
+                {/* Phone Icon + Link */}
+                <span className="text-xl md:text-2xl text-green-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h2.28a2 2 0 011.94 1.515l.3 1.2a2 2 0 01-.45 1.95l-.7.7a16.001 16.001 0 006.586 6.586l.7-.7a2 2 0 011.95-.45l1.2.3A2 2 0 0121 16.72V19a2 2 0 01-2 2h-1C9.163 21 3 14.837 3 7V5z" />
+                  </svg>
+                </span>
+                <a
+                  href={`tel:${profile.phone}`}
+                  className="text-green-600 hover:underline font-medium text-sm md:text-base transition-colors duration-200"
+                >
                   {profile.phone}
-                </span>
+                </a>
               </div>
               <div className="flex items-center gap-3">
-                <span className="text-xl md:text-2xl">📍</span>
+                {/* Location Icon */}
+                <span className="text-xl md:text-2xl text-red-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c1.104 0 2-.896 2-2s-.896-2-2-2-2 .896-2 2 .896 2 2 2z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4.5 8-10A8 8 0 004 12c0 5.5 8 10 8 10z" />
+                  </svg>
+                </span>
                 <span className="text-gray-700 font-medium text-sm md:text-base">
                   {profile.location}
                 </span>
+              </div>
+              <div className="flex items-center gap-3">
+                {/* LinkedIn Icon + Link */}
+                <span className="text-xl md:text-2xl text-blue-700">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm15.5 11.268h-3v-5.604c0-1.337-.025-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.838-1.563 3.034 0 3.595 1.997 3.595 4.59v5.606z"/>
+                  </svg>
+                </span>
+                <a
+                  href={profile.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-700 hover:underline font-medium text-sm md:text-base transition-colors duration-200"
+                >
+                  LinkedIn
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                {/* GitHub Icon + Link */}
+                <span className="text-xl md:text-2xl text-gray-800">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6">
+                    <path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.726-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.305.762-1.604-2.665-.305-5.466-1.334-5.466-5.931 0-1.31.468-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222 0 1.604-.015 2.896-.015 3.286 0 .319.216.694.825.576C20.565 21.796 24 17.299 24 12c0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </span>
+                <a
+                  href={profile.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-800 hover:text-black hover:underline font-medium text-sm md:text-base transition-colors duration-200"
+                >
+                  GitHub
+                </a>
               </div>
             </div>
           </motion.div>

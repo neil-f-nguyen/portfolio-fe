@@ -138,7 +138,7 @@ export default function Projects({ projects }: ProjectsProps) {
           🚀
         </motion.div>
       </motion.div>
-      
+
       {/* Projects Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
         {projects.map((project, index) => (
@@ -151,36 +151,58 @@ export default function Projects({ projects }: ProjectsProps) {
             className="card-ai overflow-hidden hover:shadow-2xl transition-all duration-300 hover:scale-105 w-full flex flex-col h-full"
           >
             {/* Project Image Carousel - Swiper */}
-            <div 
+            <div
               className="relative h-40 md:h-48 bg-gradient-to-br from-blue-50 to-purple-50 overflow-hidden project-carousel cursor-pointer group"
               onClick={() => handleImageClick(project, 0)}
             >
               {/* Click to view gallery indicator */}
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 z-20 pointer-events-none">
                 <div className="bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg">
-                  <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                  <svg
+                    className="w-6 h-6 text-gray-700"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                    />
                   </svg>
                 </div>
               </div>
               <Swiper
                 modules={[Navigation, Pagination, Autoplay]}
-                navigation={project.image && project.image.length > 1 ? {
-                  nextEl: `.swiper-button-next-${project.id}`,
-                  prevEl: `.swiper-button-prev-${project.id}`,
-                } : false}
-                pagination={project.image && project.image.length > 1 ? {
-                  el: `.swiper-pagination-${project.id}`,
-                  clickable: true,
-                } : false}
+                navigation={
+                  project.image && project.image.length > 1
+                    ? {
+                        nextEl: `.swiper-button-next-${project.id}`,
+                        prevEl: `.swiper-button-prev-${project.id}`,
+                      }
+                    : false
+                }
+                pagination={
+                  project.image && project.image.length > 1
+                    ? {
+                        el: `.swiper-pagination-${project.id}`,
+                        clickable: true,
+                      }
+                    : false
+                }
                 loop={project.image && project.image.length > 1}
-                autoplay={project.image && project.image.length > 1 ? {
-                  delay: 3000,
-                  disableOnInteraction: false,
-                } : false}
+                autoplay={
+                  project.image && project.image.length > 1
+                    ? {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                      }
+                    : false
+                }
                 className="h-full"
               >
-                {/* Sử dụng array images từ project */}
+                {/* Use images array from project */}
                 {project.image && project.image.length > 0 ? (
                   project.image.map((image, imgIndex) => (
                     <SwiperSlide key={imgIndex}>
@@ -189,25 +211,26 @@ export default function Projects({ projects }: ProjectsProps) {
                           src={image}
                           alt={`${project.title} - Image ${imgIndex + 1}`}
                           className="max-w-full max-h-full object-contain bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg group-hover:scale-105 transition-transform duration-500 shadow-sm"
-                          onLoad={(e) => {
+                          onLoad={e => {
                             const img = e.currentTarget;
-                            const aspectRatio = img.naturalWidth / img.naturalHeight;
-                            
-                            // Phát hiện ảnh mobile (tỷ lệ < 1.2) hoặc desktop
+                            const aspectRatio =
+                              img.naturalWidth / img.naturalHeight;
+
+                            // Detect mobile image (ratio < 1.2) or desktop
                             if (aspectRatio < 1.2) {
-                              // Ảnh mobile - thêm class đặc biệt và điều chỉnh kích thước
+                              // Mobile image - add special class and adjust size
                               img.classList.add('mobile-image');
                               img.style.maxHeight = '85%';
                               img.style.maxWidth = '60%';
                               img.style.objectFit = 'contain';
                             } else if (aspectRatio > 2.5) {
-                              // Ảnh rất rộng (có thể là panorama) - điều chỉnh đặc biệt
+                              // Very wide image (possibly panorama) - special adjustment
                               img.classList.add('desktop-image');
                               img.style.objectFit = 'cover';
                               img.style.width = '100%';
                               img.style.height = '100%';
                             } else {
-                              // Ảnh desktop thông thường
+                              // Regular desktop image
                               img.classList.add('desktop-image');
                               img.style.objectFit = 'cover';
                               img.style.width = '100%';
@@ -226,7 +249,7 @@ export default function Projects({ projects }: ProjectsProps) {
                     </SwiperSlide>
                   ))
                 ) : (
-                  // Fallback khi không có ảnh
+                  // Fallback when no image
                   <SwiperSlide>
                     <div className="w-full h-full flex items-center justify-center text-gray-400">
                       <span className="text-sm font-medium">
@@ -237,12 +260,12 @@ export default function Projects({ projects }: ProjectsProps) {
                 )}
               </Swiper>
 
-              {/* Custom Navigation Buttons - chỉ hiển thị khi có nhiều ảnh */}
+              {/* Custom Navigation Buttons - only show when there are multiple images */}
               {project.image && project.image.length > 1 && (
                 <>
                   <div
                     className={`swiper-button-prev-${project.id} swiper-nav-btn swiper-nav-prev`}
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={e => e.stopPropagation()}
                   >
                     <svg
                       className="w-4 h-4 text-gray-600"
@@ -260,7 +283,7 @@ export default function Projects({ projects }: ProjectsProps) {
                   </div>
                   <div
                     className={`swiper-button-next-${project.id} swiper-nav-btn swiper-nav-next`}
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={e => e.stopPropagation()}
                   >
                     <svg
                       className="w-4 h-4 text-gray-600"
@@ -280,7 +303,7 @@ export default function Projects({ projects }: ProjectsProps) {
                   {/* Custom Pagination */}
                   <div
                     className={`swiper-pagination-${project.id} swiper-pagination-custom`}
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={e => e.stopPropagation()}
                   ></div>
                 </>
               )}
@@ -291,13 +314,34 @@ export default function Projects({ projects }: ProjectsProps) {
               <h3 className="text-lg md:text-xl font-bold text-gray-800 mb-2">
                 {project.title}
               </h3>
-              <p className="text-gray-600 text-sm md:text-base mb-3 md:mb-4 line-clamp-2">
-                {project.description}
-              </p>
+              <div className="mb-3 md:mb-4">
+                <p className="text-gray-600 text-sm md:text-base line-clamp-2">
+                  {project.description}
+                </p>
+              </div>
 
               {/* Tech Stack */}
               <div className="mb-4">
                 <TechStackDisplay technologies={project.technologies} />
+                {(project.technologies.length > 4 ||
+                  project.description.length > 100) && (
+                  <div className="flex items-center gap-1 mt-1 text-xs text-blue-500">
+                    <svg
+                      className="w-3 h-3"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    <span>View details in gallery</span>
+                  </div>
+                )}
               </div>
 
               {/* Action Buttons - Always at bottom */}
@@ -309,7 +353,7 @@ export default function Projects({ projects }: ProjectsProps) {
                     rel="noopener noreferrer"
                     className={`${project.demo ? 'flex-1' : 'w-full'} bg-white/80 hover:bg-white border border-gray-200 text-gray-700 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 hover:scale-105 text-center`}
                   >
-                    Source
+                    Source Code
                   </a>
                 )}
                 {project.demo && (
@@ -335,9 +379,9 @@ export default function Projects({ projects }: ProjectsProps) {
           isOpen={galleryOpen}
           onClose={handleCloseGallery}
           initialIndex={selectedImageIndex}
-          projectTitle={selectedProject.title}
+          project={selectedProject}
         />
       )}
     </section>
   );
-} 
+}

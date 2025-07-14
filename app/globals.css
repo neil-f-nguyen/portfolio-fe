@@ -59,7 +59,7 @@
     @apply bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-xl shadow-lg px-8 py-3 hover:scale-105 hover:shadow-xl transition-all duration-300;
   }
   .section-ai {
-    @apply py-20 px-4 bg-gradient-to-br from-blue-50 via-purple-50 to-white;
+    @apply py-4 px-4 bg-gradient-to-br from-blue-50 via-purple-50 to-white;
   }
   .line-clamp-3 {
     display: -webkit-box;
@@ -210,6 +210,39 @@
   }
   
   .project-carousel:hover {
-    transform: scale(1.02);
+    transform: translateY(-2px);
+  }
+  
+  /* Project Info Panel Styles */
+  .project-info-panel {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+  }
+  
+  .project-info-panel::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .project-info-panel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .project-info-panel::-webkit-scrollbar-thumb {
+    background: rgba(156, 163, 175, 0.5);
+    border-radius: 3px;
+  }
+  
+  .project-info-panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(156, 163, 175, 0.7);
+  }
+  
+  /* Tech Stack Full Display */
+  .tech-stack-full .tech-tag {
+    transition: all 0.2s ease;
+  }
+  
+  .tech-stack-full .tech-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }
 } 
