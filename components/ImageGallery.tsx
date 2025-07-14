@@ -149,7 +149,7 @@ export default function ImageGallery({
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className={`relative w-full h-full max-w-7xl max-h-[90%] p-6 pt-0`}
+            className={`relative w-full h-full max-w-7xl max-h-[90%] mx-auto p-6 pt-0`}
             onClick={e => e.stopPropagation()}
           >
             <Swiper
