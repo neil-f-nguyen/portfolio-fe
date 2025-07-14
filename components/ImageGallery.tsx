@@ -82,7 +82,7 @@ export default function ImageGallery({
             duration: 0.2,
           }}
         >
-          <div className="w-full p-4 flex justify-between items-center gap-4">
+          <div className="w-full px-4 pt-4 flex justify-between items-center gap-4">
             {/* Project Title */}
             <div className="text-white font-semibold text-lg">
               {project?.title || 'Project Gallery'}
@@ -149,7 +149,7 @@ export default function ImageGallery({
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className={`relative w-full h-full max-w-7xl max-h-[90vh] p-4`}
+            className={`relative w-full h-full max-w-7xl max-h-[90%] p-6 pt-0`}
             onClick={e => e.stopPropagation()}
           >
             <Swiper
